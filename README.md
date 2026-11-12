@@ -26,3 +26,7 @@ Manifest V3 · TypeScript (strict) · Vite · Preact · Vitest · ESLint 9
 
 ## Making it yours
 Rename in `package.json` and `manifest.config.ts`, replace `public/icon.png`, and review permissions.
+
+## Styling
+Dependency-free design system in `src/styles/` (no build step, no Tailwind install needed):
+`tokens.css` (grey/black/white/blue, error/warning/info/success, spacing, type, radius, shadow; automatic dark mode), `base.css` (reset, focus ring, reduced motion), `components.css` (`.btn`, `.input`, `.card`, `.badge`, `.alert-*`, `.skeleton`, `.spinner`), `utilities.css` (`.grid-*`, `.flex`, `.stack`, spacing helpers). Change colours only in `tokens.css`.

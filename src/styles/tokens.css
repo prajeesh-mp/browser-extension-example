@@ -1,0 +1,57 @@
+/* Design tokens: the only place raw colours/sizes are defined. */
+:root {
+  color-scheme: light dark;
+
+  /* Neutral (grey) */
+  --gray-50: #f8f9fa; --gray-100: #f1f3f5; --gray-200: #e4e7eb; --gray-300: #cdd2d9;
+  --gray-400: #9aa3af; --gray-500: #6b7380; --gray-600: #4b5360; --gray-700: #343b46;
+  --gray-800: #1f242c; --gray-900: #12151a;
+  --black: #0a0b0d; --white: #ffffff;
+
+  /* Brand (blue) */
+  --blue-50: #eff6ff; --blue-100: #dbeafe; --blue-500: #3b82f6; --blue-600: #2563eb; --blue-700: #1d4ed8;
+
+  /* Status */
+  --error-bg: #fef2f2; --error-border: #fecaca; --error: #dc2626; --error-strong: #991b1b;
+  --warning-bg: #fffbeb; --warning-border: #fde68a; --warning: #d97706; --warning-strong: #92400e;
+  --info-bg: #eff6ff; --info-border: #bfdbfe; --info: #2563eb; --info-strong: #1e40af;
+  --success-bg: #f0fdf4; --success-border: #bbf7d0; --success: #16a34a; --success-strong: #166534;
+
+  /* Semantic (light) */
+  --bg: var(--white); --surface: var(--gray-50); --surface-2: var(--gray-100);
+  --border: var(--gray-200); --border-strong: var(--gray-300);
+  --text: var(--gray-900); --text-muted: var(--gray-500);
+  --primary: var(--blue-600); --primary-hover: var(--blue-700); --on-primary: var(--white);
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--blue-500) 40%, transparent);
+
+  /* Spacing (4px scale) */
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+  --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem;
+
+  /* Type */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --text-xs: .75rem; --text-sm: .875rem; --text-base: 1rem; --text-lg: 1.125rem; --text-xl: 1.5rem;
+
+  /* Shape & depth */
+  --radius-sm: 6px; --radius: 10px; --radius-lg: 14px; --radius-full: 999px;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / .06);
+  --shadow: 0 4px 12px rgb(0 0 0 / .08);
+
+  /* Motion */
+  --ease: cubic-bezier(.2, .8, .2, 1); --duration: 150ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--black); --surface: var(--gray-900); --surface-2: var(--gray-800);
+    --border: var(--gray-700); --border-strong: var(--gray-600);
+    --text: var(--gray-100); --text-muted: var(--gray-400);
+    --primary: var(--blue-500); --primary-hover: #60a5fa; --on-primary: var(--black);
+    --error-bg: #2a1214; --error-border: #5c1d20; --error-strong: #fca5a5;
+    --warning-bg: #2a2010; --warning-border: #5c4614; --warning-strong: #fcd34d;
+    --info-bg: #101c33; --info-border: #1e3a6b; --info-strong: #93c5fd;
+    --success-bg: #0f2418; --success-border: #1b4d2e; --success-strong: #86efac;
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / .5); --shadow: 0 4px 12px rgb(0 0 0 / .5);
+  }
+}

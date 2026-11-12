@@ -1,0 +1,18 @@
+name: Release
+on:
+  push:
+    tags: ['v*']
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version-file: .nvmrc, cache: npm }
+      - run: npm ci
+      - run: npm run zip
+      - run: npm run zip:firefox
+      - uses: softprops/action-gh-release@v2
+        with: { files: '*.zip' }
+      # Optional: publish to the Chrome Web Store with a publish action + secrets.

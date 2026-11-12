@@ -1,3 +1,4 @@
+declare const process: { env: Record<string, string | undefined> }
 import { defineConfig, type Plugin } from 'vite'
 import preact from '@preact/preset-vite'
 import { manifest } from './manifest.config'
@@ -14,7 +15,7 @@ function emitManifest(): Plugin {
 export default defineConfig(({ mode }) => ({
   plugins: [preact(), emitManifest()],
   build: {
-    outDir: 'dist',
+    outDir: process.env.TARGET === 'firefox' ? 'dist-firefox' : 'dist',
     emptyOutDir: true,
     sourcemap: mode === 'development',
     rollupOptions: {

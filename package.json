@@ -9,7 +9,10 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "lint": "eslint src",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "build:firefox": "tsc --noEmit && TARGET=firefox vite build",
+    "zip": "npm run build && cd dist && zip -r ../extension-chrome.zip .",
+    "zip:firefox": "npm run build:firefox && cd dist-firefox && zip -r ../extension-firefox.zip ."
   },
   "dependencies": {
     "preact": "^10.24.0"

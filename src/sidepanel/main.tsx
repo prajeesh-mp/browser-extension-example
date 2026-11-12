@@ -1,7 +1,7 @@
 import { render } from 'preact'
 import { useEffect, useState } from 'preact/hooks'
 import { countKey } from '../shared/messages'
-import './style.css'
+import '../styles/index.css'
 
 async function activeTabId(): Promise<number | undefined> {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
@@ -37,7 +37,16 @@ function useClickCount() {
 
 function App() {
   const count = useClickCount()
-  return <main class="counter">Clicks: {count ?? '…'}</main>
+  return (
+    <main class="container stack">
+      <h1>Overview</h1>
+      <section class="card flex items-center justify-between">
+        <span class="text-muted">Clicks on this tab</span>
+        {count === null ? <span class="skeleton" style="width:2rem;height:1.5rem" /> : <strong class="text-lg">{count}</strong>}
+      </section>
+      <div class="alert alert-info" role="status">Counts reset when the tab closes.</div>
+    </main>
+  )
 }
 
 render(<App />, document.getElementById('root')!)
