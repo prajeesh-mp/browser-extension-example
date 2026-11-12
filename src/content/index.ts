@@ -1,29 +1,14 @@
-import { runtime } from 'webextension-polyfill'
+import type { Message } from '../shared/messages'
 
-console.log('[content] loaded ')
+const message: Message = { type: 'click' }
 
-type Listener = (event: MouseEvent) => void
+window.addEventListener(
+  'click',
+  () => {
+    chrome.runtime.sendMessage(message).catch(() => {
+      // Extension was reloaded/service worker unavailable; ignore.
+    })
+  },
+  { passive: true },
+)
 
-let count = 0
-
-function registerClickListener(listener: Listener) {
-  window.addEventListener('click', listener)
-
-  // step 2
-  return function cleanup() {
-    window.removeEventListener('click', listener)
-  }
-}
-
-async function countClicks() {
-  count++
-  console.log('click(): ', count)
-  // step 2
-  return runtime.sendMessage({ from: 'content', to: 'background', action: 'click' })
-}
-
-export function init() {
-  registerClickListener(countClicks)
-}
-
-init()
